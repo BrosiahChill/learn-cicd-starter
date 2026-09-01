@@ -9,28 +9,28 @@ import (
 
 func TestGetAPIKey(t *testing.T) {
 	tests := []struct {
-		key	string
-		value string
-		expect string
+		key       string
+		value     string
+		expect    string
 		expectErr string
 	}{
 		{
 			expectErr: "no authorization header",
 		},
 		{
-			key: "Authorization",
-			value: "-",
+			key:       "Authorization",
+			value:     "-",
 			expectErr: "malformed authorization header",
 		},
 		{
-			key: "Authorization",
-			value: "Bearer xxxxxx",
+			key:       "Authorization",
+			value:     "Bearer xxxxxx",
 			expectErr: "malformed authorization header",
 		},
 		{
-			key: "Authorization",
-			value: "ApiKey xxxxxx",
-			expect: "xxxxxx",
+			key:       "Authorization",
+			value:     "ApiKey xxxxxx",
+			expect:    "xxxxxx",
 			expectErr: "not expecting an error",
 		},
 	}
